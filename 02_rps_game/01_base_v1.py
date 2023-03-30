@@ -68,12 +68,13 @@ while end_game == "no":
         heading = "Round {} of {}".format(rounds_played + 1, rounds)
 
     print(heading)
-    choose_instruction = "Choose rock (r), paper (p), scissors (s), or 'xxx' to quit: "
+    choose_instruction = "Choose rock (r), paper (p), scissors (s), or 'xxx' (x) to quit: "
     choose_error = "INVALID - please choose rock, paper, scissors, or 'xxx'"
 
     # Ask user for choice, checks if it is valid
     choose = choices_checker(choose_instruction, rps_list, choose_error)
 
+    # end game with exit code
     if choose == "xxx":
         break
 
@@ -83,6 +84,12 @@ while end_game == "no":
 
     if rounds_played == rounds:
         break
+
+    # get computer choice
+    comp_choice = random.choice(rps_list[:-1])
+    print(comp_choice, end='\t')
+
+    # compare choices
 
 # asks user if they want to see game history
 
