@@ -78,7 +78,7 @@ while end_game == "no":
     if choose == "xxx":
         break
 
-    print("You chose '{}'".format(choose))
+    print("You chose: '{}'".format(choose))
 
     rounds_played += 1
 
@@ -86,8 +86,6 @@ while end_game == "no":
         break
 
     # get computer choice
-    comp_choice = random.choice(rps_list[:-1])
-    print(comp_choice, end='\t')
 
     # compare choices
 
