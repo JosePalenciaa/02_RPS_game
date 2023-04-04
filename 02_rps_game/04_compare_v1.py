@@ -4,6 +4,7 @@ comp_index = 0
 
 for item in rps_list:
     user_index = 0
+
     for item in rps_list:
         user_choice = rps_list[user_index]
         comp_choice = rps_list[comp_index]
@@ -11,7 +12,8 @@ for item in rps_list:
 
         # compare options...
         print()
-        print(f'User chose {user_choice}, Comp chose {comp_choice}')
+        print(f'You chose:  {user_choice}. Comp chose: {comp_choice}')
+
         if user_choice == comp_choice:
             result = "tie"
             print("Its a draw / tie.")
@@ -23,9 +25,9 @@ for item in rps_list:
             result = "win"
         else:
             result = "lose"
-            print("You Lose ")
+            print("😢You lose😢")
 
         if result == "win":
-            print("you win")
+            print("✔you win✔")
 
     comp_index += 1
