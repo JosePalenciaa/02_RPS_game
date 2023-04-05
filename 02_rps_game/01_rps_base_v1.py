@@ -6,7 +6,7 @@ import random
 def check_rounds():
 
     while True:
-        response = input("How many rounds (<space> for continuous): ")
+        response = input("How many rounds (<enter> for continuous): ")
 
         round_error = "Please type either < enter >, " \
                       "or an integer that is more than 0\n"
@@ -53,6 +53,8 @@ rps_list = ["rock", "paper", "scissors", "xxx"]
 # asks user for # rounds + looping
 
 rounds_played = 0
+rounds_lost = 0
+rounds_draw = 0
 
 # Ask user for # of rounds, < enter > for infinite
 rounds = check_rounds()
@@ -78,12 +80,8 @@ while end_game == "no":
     if choose == "xxx":
         break
 
-    print("You chose: '{}'".format(choose))
-
-    rounds_played += 1
-
-    if rounds_played == rounds:
-        break
+    print()
+    print("You chose: {}".format(choose))
 
     # get computer choice
     comp_choice = random.choice(rps_list[:-1])
@@ -92,7 +90,8 @@ while end_game == "no":
     # compare choices
     if choose == comp_choice:
         result = "tie"
-        print("Its a draw / tie.")
+        rounds_draw += 1
+
     elif choose == "paper" and comp_choice == "rock":
         result = "win"
     elif choose == "scissors" and comp_choice == "paper":
@@ -101,10 +100,31 @@ while end_game == "no":
         result = "win"
     else:
         result = "lose"
-        print("😢You lose - skill issue😢")
+        # print("😢You lose - skill issue😢")
+        rounds_lost += 1
 
-    if result == "win":
-        print("✔you win - good job✔")
+    # if result == "win":
+        # print("✔you win - good job✔")
+
+    if result == "tie":
+        feedback = "😐Its a draw / tie😐"
+
+    else:
+        feedback = f'{choose} vs {comp_choice} - You {result}'
+
+    rounds_played += 1
+
+    if rounds_played == rounds:
+        break
+
 # asks user if they want to see game history
 
 # show game statistics...
+
+rounds_won = rounds_played - rounds_lost - rounds_draw
+
+print()
+print("End Game Summary")
+print(f'Won: {rounds_won} \t\t\tLost: {rounds_lost} \t\tTie: {rounds_draw}')
+print()
+print("Thank you for playing")
