@@ -22,6 +22,6 @@ rounds_won = rounds_played - rounds_lost - rounds_draw
 
 print()
 print("End Game Summary")
-print(f'Won: {rounds_won} \t\t\tLost: {rounds_lost} \t\tTie: {rounds_draw}')
+print(f'Won: {rounds_won} \t|\tLost: {rounds_lost}\t|\tTie: {rounds_draw}')
 print()
 print("Thank you for playing")

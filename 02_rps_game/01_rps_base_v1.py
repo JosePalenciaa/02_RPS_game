@@ -88,29 +88,28 @@ while end_game == "no":
     print("Computer chose: ", comp_choice)
 
     # compare choices
+    # checks if user's choice is same as computer's
+    # results in a tie
     if choose == comp_choice:
         result = "tie"
         rounds_draw += 1
 
+    # checks if user's choice beats the computers
+    # win for the user
     elif choose == "paper" and comp_choice == "rock":
         result = "win"
     elif choose == "scissors" and comp_choice == "paper":
         result = "win"
     elif choose == "rock" and comp_choice == "scissors":
         result = "win"
+
+    # if user's choice isn't a win or tie, user loses
     else:
         result = "lose"
-        # print("😢You lose - skill issue😢")
         rounds_lost += 1
 
-    # if result == "win":
-        # print("✔you win - good job✔")
-
-    if result == "tie":
-        feedback = "😐Its a draw / tie😐"
-
-    else:
-        feedback = f'{choose} vs {comp_choice} - You {result}'
+    # prints the rounds result
+    print(f'{choose} vs {comp_choice} - You {result}')
 
     rounds_played += 1
 
@@ -125,6 +124,6 @@ rounds_won = rounds_played - rounds_lost - rounds_draw
 
 print()
 print("End Game Summary")
-print(f'Won: {rounds_won} \t\t\tLost: {rounds_lost} \t\tTie: {rounds_draw}')
+print(f'Won: {rounds_won} \t|\tLost: {rounds_lost} \t|\tTie: {rounds_draw}')
 print()
 print("Thank you for playing")
