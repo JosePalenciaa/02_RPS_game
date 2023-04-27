@@ -76,9 +76,13 @@ while end_game == "no":
     # Ask user for choice, checks if it is valid
     choose = choices_checker(choose_instruction, rps_list, choose_error)
 
-    # end game with exit code
-    if choose == "xxx":
+    # end game with exit code if possible
+    if choose == "xxx" and rounds_played > 0:
         break
+
+    elif choose == "xxx":
+        print("Play at least 1 round")
+        continue
 
     print()
     print("You chose: {}".format(choose))
@@ -109,8 +113,8 @@ while end_game == "no":
         rounds_lost += 1
 
     # prints the rounds result
-    print(f'{choose} vs {comp_choice} - You {result}')
-
+    feedback = f'{choose} vs {comp_choice} - You {result}'
+    print(feedback)
     rounds_played += 1
 
     if rounds_played == rounds:
@@ -118,12 +122,25 @@ while end_game == "no":
 
 # asks user if they want to see game history
 
-# show game statistics...
 
+# calculates # of rounds won
 rounds_won = rounds_played - rounds_lost - rounds_draw
 
+# show game statistics...
+# Calculate game stats
+percent_win = rounds_won / rounds_played * 100
+percent_lose = rounds_lost / rounds_played * 100
+percent_draw = rounds_draw / rounds_played * 100
+
+# displays game stats with %
+# values to nearest who number
 print()
-print("End Game Summary")
+print("#### Game Statistics ####")
+print("Win: {}, ({:.0f}%) \nLose: {}, ({:.0f}%) \nTie: {}, ({:.0f}%)"
+      .format(rounds_won, percent_win, rounds_lost, percent_lose, rounds_draw, percent_draw))
+
+print()
+print("****** End Game Summary ******")
 print(f'Won: {rounds_won} \t|\tLost: {rounds_lost} \t|\tTie: {rounds_draw}')
 print()
-print("Thank you for playing")
+print("!!! Thank you for playing !!!")
