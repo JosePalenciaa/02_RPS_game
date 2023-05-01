@@ -47,6 +47,8 @@ def choices_checker(question, valid_list, error):
 yes_no = ["yes", "no"]
 rps_list = ["rock", "paper", "scissors", "xxx"]
 
+game_summary = []
+
 # asks users if they have played, displays instructions if 'no'
 
 
@@ -95,7 +97,7 @@ while end_game == "no":
     # checks if user's choice is same as computer's
     # results in a tie
     if choose == comp_choice:
-        result = "tie"
+        result = "tied"
         rounds_draw += 1
 
     # checks if user's choice beats the computers
@@ -117,6 +119,9 @@ while end_game == "no":
     print(feedback)
     rounds_played += 1
 
+    outcome = f'Round: {rounds_played} - {feedback}'
+    game_summary.append(outcome)
+
     if rounds_played == rounds:
         break
 
@@ -132,15 +137,22 @@ percent_win = rounds_won / rounds_played * 100
 percent_lose = rounds_lost / rounds_played * 100
 percent_draw = rounds_draw / rounds_played * 100
 
+# Displays the round's battles and results
+print()
+print("*** Game History ***")
+for game in game_summary:
+    print(game)
+
 # displays game stats with %
 # values to nearest who number
+
 print()
 print("#### Game Statistics ####")
-print("Win: {}, ({:.0f}%) \nLose: {}, ({:.0f}%) \nTie: {}, ({:.0f}%)"
+print("Win: {}, ({:.0f}%) \nLose: {}, ({:.0f}%) \nTied: {}, ({:.0f}%)"
       .format(rounds_won, percent_win, rounds_lost, percent_lose, rounds_draw, percent_draw))
 
 print()
 print("****** End Game Summary ******")
-print(f'Won: {rounds_won} \t|\tLost: {rounds_lost} \t|\tTie: {rounds_draw}')
+print(f'Won: {rounds_won} \t|\tLost: {rounds_lost} \t|\tTied: {rounds_draw}')
 print()
 print("!!! Thank you for playing !!!")
